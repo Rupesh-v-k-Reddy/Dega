@@ -3,6 +3,7 @@
 const {pg_execute} = require('./postgres_helper')
 const {QUERY_GET_USERS} =require('./sql_helper')
 const utils = require("./utils")
+const INTERNAL_COMPANY = 'APPLE'
 
 
 exports.handler = async (event) => {
