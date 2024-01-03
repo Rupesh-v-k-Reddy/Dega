@@ -4,23 +4,20 @@ const { Client } = require('pg');
 const {
     POSTGRES_USER,
     POSTGRES_HOST,
-    POSTGRES_READER_HOST,
     POSTGRES_DB,
     POSTGRES_PASS,
-    POSTGRES_READER_PASS,
     POSTGRES_PORT,
-    // POSTGRES_SCHEMA,
 } = process.env
 
-exports.pg_execute = (query, values, writeMode) => {
+exports.pg_execute = (query, values) => {
     return new Promise(async (resolve, reject) => {
         console.log("Postgres: executer");
 
         const client = new Client({
             user: POSTGRES_USER,
-            host: writeMode ? POSTGRES_HOST : POSTGRES_READER_HOST,
+            host: POSTGRES_HOST,
             database: POSTGRES_DB,
-            password: writeMode ? POSTGRES_PASS : POSTGRES_READER_PASS,
+            password: POSTGRES_PASS,
             port: POSTGRES_PORT,
         });
 
